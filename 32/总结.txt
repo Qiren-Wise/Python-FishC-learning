@@ -1,0 +1,19 @@
+总结：这节课我们了解了pickle模块
+有些时候我们需要长久保存一些复杂的数据，如列表、字典等等，如果直接写在文件中可能会很占内存，所以我们可以用pickle模块
+这个模块几乎可以把所以python对象都转换成二进制的形式存放，这个过程称为pickling，二进制转会对象的过程成为unpickling。
+
+我们可以这样输入：
+import pickle   # 引入模块
+myList = [123,'刘备',['xxoo']]  # 输入一个列表
+pickle_file = open('D:\\myList.pkl','wb')   # 这里写入二进制的形式打开一个文件，文件的后缀名可以随意，不过最好是.pkl或.pickle哦！
+pickle.dump(myList,pickle_file)     # 将第一个文件中的列表倒进第二个参数文件中，这里使用了dump()这个方法
+pickle_file.close()
+# 这样就会在D盘创建一个名叫myList.pkl的文件，并且由于是二进制文件，普通的软件打开会是乱码
+
+#我们要使用时，可以用load()方法
+improt pickle
+pickle_file = open('D:\\myList.pkl','rb')   # 这里注意要以二进制形式打开哦
+myList = pickle.load(pickle_file)       # 将文件内容读取出来
+print(myList)   # 这样程序执行后就又是我们的列表啦！
+
+利用pickle模块，不仅可以保存列表，还可以保存很多你想象的到的东西

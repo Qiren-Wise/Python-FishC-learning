@@ -1,0 +1,56 @@
+password = input('请输入需要检查的密码组合:')
+teshu = '''`!@#$%^&*()_+-=/*{}[]\|'";:/?,.<>'''
+zimu = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+num = '0123456789'
+chang = len(password)
+while password.isspace() or chang ==0:
+    password = input('你输入的密码为空，请重新输入:')
+    chang = len(password)
+
+if chang<8:
+    quan = 1
+elif 8<chang<16:
+    quan = 2
+else:
+    quan = 3
+
+zhong = 0
+for i in password:
+    if i in teshu:
+        zhong +=1
+        break
+
+for i in password:
+    if i in num:
+        zhong +=1
+        break
+    
+for i in password:
+    if i in zimu:
+        zhong +=1
+        break
+
+while True:
+    tishi = '请按以下方式提升你的密码安全级别：\n\
+    \t1.密码必须由数字、字母以及特殊字符组成。\n\
+    \t2.密码最好为字母开头。\n\
+    \t3.密码不低于16位。'
+
+    if quan == 1 or zhong == 1:
+        print('你的密码安全评定为：低')
+        print(tishi)
+        break
+    elif quan == 3 and zhong == 3 and (password[0] in zimu):
+        print('你的密码安全评定为：高')
+        print('请继续保持')
+        break
+    else:
+        print('你的密码安全评定为：中')
+        print(tishi)
+        break
+
+    
+
+        
+    
+        
